@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>state</title>
+</head>
+<body>
+	<!-- 准备好一个“容器” -->
+	<div id="test"></div>
+	
+	<!-- 引入react核心库 -->
+	<script type="text/javascript" src="../js/react.development.js"></script>
+	<!-- 引入react-dom，用于支持react操作DOM -->
+	<script type="text/javascript" src="../js/react-dom.development.js"></script>
+	<!-- 引入babel，用于将jsx转为js -->
+	<script type="text/javascript" src="../js/babel.min.js"></script>
+
+	<script type="text/babel">
+		//1.创建组件
+		class Weather extends React.Component{
+			constructor(props){
+				super(props)
+				this.state = {isHot: true}
+				// 等号右边this是新建实例对象，等号右边this.changeWeather顺着原型对象找到下方changeWeather(){}.   bind 括号中的this是Weather的实例对象，因为在constructor中
+				this.changeWeather = this.changeWeather.bind(this)
+
+			} 
+			changeWeather() {
+				const isHot = this.state.isHot;
+				this.setState({isHot:!isHot})
+				
+			}
+			render(){
+				const {isHot} = this.state
+				return (
+					
+					<h1 onClick={this.changeWeather} >Today is {isHot? 'hot' : 'cold'}!</h1>
+				)
+			}
+		}
+		ReactDOM.render(<Weather/>,document.getElementById('test'))
+				
+	</script>
+</body>
+</html>
