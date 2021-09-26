@@ -70,6 +70,7 @@
 			componentDidMount(){
 				console.log('Count---componentDidMount');
 			}
+			
 
 			//组件将要卸载的钩子
 			componentWillUnmount(){
@@ -79,6 +80,7 @@
 			//控制组件更新的“阀门”
 			shouldComponentUpdate(){
 				console.log('Count---shouldComponentUpdate');
+				// return false
 				return true
 			}
 
