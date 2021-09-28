@@ -20,7 +20,11 @@ export default class Message extends Component {
 							return (
 								<li key={msgObj.id}>
 									{/* 向路由组件传递params参数 */}
-									<Link to={`/home/message/detail/${msgObj.id}/${msgObj.title}`}>{msgObj.title}</Link>
+									{/* <Link to={`/home/message/detail/${msgObj.id}/${msgObj.title}`}>{msgObj.title}</Link> */}
+									{/* 向路由组件传递search/query参数 */}
+									{/* <Link to={`/home/message/detail/?id=${msgObj.id}&title=${msgObj.title}`}>{msgObj.title}</Link> */}
+									{/* 向路由组件传递state参数 */}
+									<Link to={{pathname: '/home/message/detail', state:{id:msgObj.id, title:msgObj.title}}}>{msgObj.title}</Link>
 								</li>
 							)
 						})
@@ -28,7 +32,11 @@ export default class Message extends Component {
 				</ul>
 				<hr/>
 				{/* 声明接收params参数 */}
-				<Route path="/home/message/detail/:id/:title" component={Detail}/>
+				{/* <Route path="/home/message/detail/:id/:title" component={Detail}/> */}
+				{/* 声明接收search/query参数 */}
+				{/* <Route path="/home/message/detail/" component={Detail}/> */}
+				{/* 声明接收state参数 */}
+				<Route path="/home/message/detail/" component={Detail}/>
 			</div>
 		)
 	}
