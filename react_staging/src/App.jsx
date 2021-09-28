@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Route,Switch} from 'react-router-dom'
+import {Route,Switch, Redirect} from 'react-router-dom'
 import Home from './pages/Home' //Home是路由组件
 import About from './pages/About' //About是路由组件
 import Header from './components/Header' //Header是一般组件
@@ -35,6 +35,7 @@ export default class App extends Component {
 								<Switch>
 									<Route path="/about" component={About}/>
 									<Route path="/home" component={Home}/>
+									<Redirect to="/home"/>
 								</Switch>
 							</div>
 						</div>
