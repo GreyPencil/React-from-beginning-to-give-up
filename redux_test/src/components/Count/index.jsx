@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import store from '../../redux/store'
+import { createIncrementAction, createDecrementAction } from '../../redux/count_action_creators'
 
 export default class Count extends Component {
     // state = { count: 0 }
@@ -14,14 +15,14 @@ export default class Count extends Component {
         const { value } = this.selectNumber
         // const { count } = this.state
         // this.setState({ count: count + value * 1 })
-        store.dispatch({type: 'increment', data: value*1})
+        store.dispatch(createIncrementAction(value*1))
     }
 
     decrement = () => {
         const { value } = this.selectNumber
         // const { count } = this.state
         // this.setState({ count: count - value * 1 })
-        store.dispatch({type: 'decrement', data: value*1})
+        store.dispatch(createDecrementAction(value*1))
     }
 
     incrementIfOdd = () => {
@@ -29,7 +30,8 @@ export default class Count extends Component {
         const { value } = this.selectNumber
         const count  = store.getState()
         if (count % 2 !== 0) {
-            store.dispatch({type: 'increment', data: value*1})
+            // store.dispatch({type: 'increment', data: value*1})
+            store.dispatch(createIncrementAction(value*1))
         }
     }
 
@@ -37,7 +39,8 @@ export default class Count extends Component {
         const {value} = this.selectNumber
         // const {count} = this.state
         setTimeout(() => {
-            store.dispatch({type: 'increment', data: value*1})
+            // store.dispatch({type: 'increment', data: value*1})
+            store.dispatch(createIncrementAction(value*1))
         },1000)
         
     }
