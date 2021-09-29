@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import store from './redux/store'
 import App from './App';
 
 ReactDOM.render(
@@ -7,3 +8,8 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
+store.subscribe(() => {
+  ReactDOM.render(
+    <App />,
+  document.getElementById('root'));
+})
