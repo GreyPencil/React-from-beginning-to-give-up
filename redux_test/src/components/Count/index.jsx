@@ -6,21 +6,28 @@ export default class Count extends Component {
         const { value } = this.selectNumber
         // const { count } = this.state
         // this.setState({ count: count + value * 1 })
+        this.props.add(value*1)
     }
 
     decrement = () => {
         const { value } = this.selectNumber
         // const { count } = this.state
         // this.setState({ count: count - value * 1 })
+        this.props.minus(value*1)
     }
+    
 
     incrementIfOdd = () => {
 
         const { value } = this.selectNumber
+        if(this.props.count % 2 !==0){
+            this.props.add(value*1)
+        }
     }
 
     incrementAsync = () => {
         const {value} = this.selectNumber
+        this.props.asyncAdd(value*1,500)
         
     }
 
@@ -28,7 +35,7 @@ export default class Count extends Component {
         // const { count } = this.state
         return (
             <div>
-                <h1>Sum: </h1>
+                <h1>Sum: {this.props.count}</h1>
                 <select name="number" ref={c => this.selectNumber = c}>
                     <option value="1">1</option>
                     <option value="2">2</option>
