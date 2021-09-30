@@ -11,7 +11,7 @@ import {connect} from 'react-redux'
 //定义UI组件
 class Count extends Component {
 
-	state = {carName:'奔驰c63'}
+	state = {carName:'benz c63'}
 
 	//加法
 	increment = ()=>{
@@ -40,7 +40,7 @@ class Count extends Component {
 		//console.log('UI组件接收到的props是',this.props);
 		return (
 			<div>
-				<h2>我是Count组件,下方组件总人数为:{this.props.renshu}</h2>
+				<h2>I am Count component ,total person:{this.props.renshu}</h2>
 				<h4>当前求和为：{this.props.count}</h4>
 				<select ref={c => this.selectNumber = c}>
 					<option value="1">1</option>
@@ -49,8 +49,8 @@ class Count extends Component {
 				</select>&nbsp;
 				<button onClick={this.increment}>+</button>&nbsp;
 				<button onClick={this.decrement}>-</button>&nbsp;
-				<button onClick={this.incrementIfOdd}>当前求和为奇数再加</button>&nbsp;
-				<button onClick={this.incrementAsync}>异步加</button>&nbsp;
+				<button onClick={this.incrementIfOdd}>add if odd</button>&nbsp;
+				<button onClick={this.incrementAsync}>add async</button>&nbsp;
 			</div>
 		)
 	}
