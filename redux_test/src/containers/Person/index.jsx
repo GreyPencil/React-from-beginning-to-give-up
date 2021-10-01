@@ -7,7 +7,7 @@ class Person extends Component {
 
 	addPerson = ()=>{
 		const name = this.nameNode.value
-		const age = this.ageNode.value
+		const age = this.ageNode.value*1
 		const personObj = {id:nanoid(),name,age}
 		this.props.jiaYiRen(personObj)
 		this.nameNode.value = ''
@@ -17,10 +17,10 @@ class Person extends Component {
 	render() {
 		return (
 			<div>
-				<h2>This is Person Component,count sum is: {this.props.he}</h2>
-				<input ref={c=>this.nameNode = c} type="text" placeholder="input name"/>
-				<input ref={c=>this.ageNode = c} type="text" placeholder="input age"/>
-				<button onClick={this.addPerson}>add</button>
+				<h2>我是Person组件,上方组件求和为{this.props.he}</h2>
+				<input ref={c=>this.nameNode = c} type="text" placeholder="输入名字"/>
+				<input ref={c=>this.ageNode = c} type="text" placeholder="输入年龄"/>
+				<button onClick={this.addPerson}>添加</button>
 				<ul>
 					{
 						this.props.yiduiren.map((p)=>{
