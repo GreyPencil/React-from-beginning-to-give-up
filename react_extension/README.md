@@ -119,10 +119,8 @@
 
 ### 使用
 
-```
-<Fragment><Fragment>
-<></>
-```
+	<Fragment><Fragment>
+	<></>
 
 ### 作用
 
@@ -167,77 +165,70 @@
 
 ### 注意
 
-```
-在应用开发中一般不用context, 一般都用它的封装react插件
-```
+	在应用开发中一般不用context, 一般都用它的封装react插件
 
 
 
 <hr/>
+
 
 ## 6. 组件优化
 
 ### Component的2个问题 
 
 > 1. 只要执行setState(),即使不改变状态数据, 组件也会重新render()
+>
 > 2. 只当前组件重新render(), 就会自动重新render子组件 ==> 效率低
 
 ### 效率高的做法
 
-> 只有当组件的state或props数据发生改变时才重新render()
+>  只有当组件的state或props数据发生改变时才重新render()
 
 ### 原因
 
-> Component中的shouldComponentUpdate()总是返回true
+>  Component中的shouldComponentUpdate()总是返回true
 
 ### 解决
 
-```
-办法1: 
-	重写shouldComponentUpdate()方法
-	比较新旧state或props数据, 如果有变化才返回true, 如果没有返回false
-办法2:  
-	使用PureComponent
-	PureComponent重写了shouldComponentUpdate(), 只有state或props数据有变化才返回true
-	注意: 
-		只是进行state和props数据的浅比较, 如果只是数据对象内部数据变了, 返回false  
-		不要直接修改state数据, 而是要产生新数据
-项目中一般使用PureComponent来优化
-```
+	办法1: 
+		重写shouldComponentUpdate()方法
+		比较新旧state或props数据, 如果有变化才返回true, 如果没有返回false
+	办法2:  
+		使用PureComponent
+		PureComponent重写了shouldComponentUpdate(), 只有state或props数据有变化才返回true
+		注意: 
+			只是进行state和props数据的浅比较, 如果只是数据对象内部数据变了, 返回false  
+			不要直接修改state数据, 而是要产生新数据
+	项目中一般使用PureComponent来优化
 
 
 
 <hr/>
 
+
 ## 7. render props
 
 ### 如何向组件内部动态传入带内容的结构(标签)?
 
-```
-Vue中: 
-	使用slot技术, 也就是通过组件标签体传入结构  <AA><BB/></AA>
-React中:
-	使用children props: 通过组件标签体传入结构
-	使用render props: 通过组件标签属性传入结构, 一般用render函数属性
-```
+	Vue中: 
+		使用slot技术, 也就是通过组件标签体传入结构  <AA><BB/></AA>
+	React中:
+		使用children props: 通过组件标签体传入结构
+		使用render props: 通过组件标签属性传入结构, 一般用render函数属性
 
 ### children props
 
-```
-<A>
-  <B>xxxx</B>
-</A>
-{this.props.children}
-问题: 如果B组件需要A组件内的数据, ==> 做不到 
-```
+	<A>
+	  <B>xxxx</B>
+	</A>
+	{this.props.children}
+	问题: 如果B组件需要A组件内的数据, ==> 做不到 
 
 ### render props
 
-```
-<A render={(data) => <C data={data}></C>}></A>
-A组件: {this.props.render(内部state数据)}
-C组件: 读取A组件传入的数据显示 {this.props.data} 
-```
+	<A render={(data) => <C data={data}></C>}></A>
+	A组件: {this.props.render(内部state数据)}
+	C组件: 读取A组件传入的数据显示 {this.props.data} 
 
 
 
@@ -278,23 +269,19 @@ componentDidCatch(error, info) {
 
 #### 方式：
 
-```
-	props：
-		(1).children props
-		(2).render props
-	消息订阅-发布：
-		pubs-sub、event等等
-	集中式管理：
-		redux、dva等等
-	conText:
-		生产者-消费者模式
-```
+		props：
+			(1).children props
+			(2).render props
+		消息订阅-发布：
+			pubs-sub、event等等
+		集中式管理：
+			redux、dva等等
+		conText:
+			生产者-消费者模式
 
 #### 组件间的关系
 
-```
-	父子组件：props
-	兄弟组件(非嵌套组件)：消息订阅-发布、集中式管理
-	祖孙组件(跨级组件)：消息订阅-发布、集中式管理、conText(用的少)
-```
+		父子组件：props
+		兄弟组件(非嵌套组件)：消息订阅-发布、集中式管理
+		祖孙组件(跨级组件)：消息订阅-发布、集中式管理、conText(用的少)
 
