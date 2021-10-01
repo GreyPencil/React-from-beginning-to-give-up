@@ -1,23 +1,19 @@
-import React, { Component } from 'react'
+import React, { Component} from 'react'
+import { ReactDOM } from 'react-dom';
 
 // export default class Demo extends Component {
 
 // 	state = {count:0}
 
 // 	add = ()=>{
-// 		//对象式的setState
-// 		/* //1.获取原来的count值
-// 		const {count} = this.state
-// 		//2.更新状态
-// 		this.setState({count:count+1},()=>{
-// 			console.log(this.state.count);
-// 		})
-// 		//console.log('12行的输出',this.state.count); //0 */
-
-// 		//函数式的setState
 // 		this.setState( state => ({count:state.count+1}))
 // 	}
 
+// 	componentDidMount(){
+// 		setInterval(() => {
+// 			this.setState(state => ({count:state.count+1}))
+// 		}, 1000)
+// 	}
 // 	render() {
 // 		return (
 // 			<div>
@@ -42,12 +38,30 @@ export default function Demo() {
 		setName("surun")
 	}
 
+	// function unmount(){
+	// 	ReactDOM.unmountComponentAtNode(document.getElementById('root'))
+	// }
+
+	function unmounttt(){
+		ReactDOM.unmountComponentAtNode(document.getElementById('root'))
+	}
+
+	React.useEffect(()=>{
+		let timer = setInterval(()=>{
+			setCount(count => count+1 )
+		},1000)
+		return ()=>{
+			clearInterval(timer)
+		}
+	},[])
+
 	return (
 		<div>
 			<h1>Count：{count}</h1>
 			<h1>Myname: {name}</h1>
 			<button onClick={add}>click me +1</button>
 			<button onClick={changeName}>click me to change my name</button>
+			<button onClick={unmounttt}>unmount</button>
 		</div>
 	)
 }
