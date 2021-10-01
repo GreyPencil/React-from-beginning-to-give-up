@@ -42,7 +42,7 @@ export default function Demo() {
 	// 	ReactDOM.unmountComponentAtNode(document.getElementById('root'))
 	// }
 
-	function unmounttt(){
+	function unmount(){
 		ReactDOM.unmountComponentAtNode(document.getElementById('root'))
 	}
 
@@ -61,7 +61,7 @@ export default function Demo() {
 			<h1>Myname: {name}</h1>
 			<button onClick={add}>click me +1</button>
 			<button onClick={changeName}>click me to change my name</button>
-			<button onClick={unmounttt}>unmount</button>
+			<button onClick={unmount}>unmount</button>
 		</div>
 	)
 }
