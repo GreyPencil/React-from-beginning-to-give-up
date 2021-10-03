@@ -1,0 +1,10 @@
+directory.getFiles()
+directory.getDirectories()
+
+Function printFiles(directory){
+    while(!directory.getFiles()){
+        directory.getDirectories()
+        printFiles(directory)
+    }
+    return directory.getFiles()
+}
